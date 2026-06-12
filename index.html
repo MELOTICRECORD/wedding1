@@ -36,6 +36,89 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 
+/* ===== INTRO OVERLAY ===== */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .8s ease;
+}
+.intro-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.intro-overlay img {
+  width: 70%;
+  max-width: 280px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  border: 2px solid var(--border);
+}
+.intro-names {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 2px;
+  margin-bottom: .3rem;
+}
+.intro-names .amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--lavender2);
+  font-size: 1.2rem;
+}
+.intro-date {
+  font-size: .75rem;
+  color: var(--text3);
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+}
+.intro-btn {
+  font-family: 'Noto Serif KR', serif;
+  font-size: .85rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background: transparent;
+  padding: .7rem 2rem;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all .3s;
+}
+.intro-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+/* ===== SOUND BUTTON ===== */
+.sound-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  transition: all .3s;
+}
+.sound-btn:hover {
+  background: var(--bg2);
+}
+
 /* ===== COVER ===== */
 .cover {
   position: relative;
@@ -408,6 +491,19 @@ footer {
 </head>
 <body>
 
+<!-- INTRO OVERLAY -->
+<div class="intro-overlay" id="introOverlay">
+  <img src="images/hero.jpg" alt="">
+  <div class="intro-names">YOUNGJUN <span class="amp">&hearts;</span> HYIIN</div>
+  <div class="intro-date" style="margin-bottom:.3rem;">2026. 09. 12 SAT PM 2:00</div>
+  <div class="intro-date" style="margin-bottom:2rem; letter-spacing:1.5px;">HOUSE OF THE RAUM - AMARIS HALL</div>
+  <p style="font-family:'Noto Serif KR',serif; font-size:.82rem; font-weight:300; color:var(--text2); line-height:2; text-align:center; margin-bottom:2rem; font-style:italic;">예쁜 예감이 들었다.<br>우리는 언제나 손을 잡고 있을 것이다.</p>
+  <button class="intro-btn" id="introBtn">청첩장 열기</button>
+</div>
+
+<!-- SOUND BUTTON -->
+<div class="sound-btn" id="soundBtn" style="display:none;">&#128266;</div>
+
 <!-- COVER -->
 <div class="cover">
   <img src="images/hero.jpg" alt="영준 혜인">
@@ -420,7 +516,7 @@ footer {
 
 <!-- VIDEO -->
 <section class="video" style="padding:2rem 1.5rem 2.5rem">
-  <iframe src="https://www.youtube.com/embed/znEGTBphsFw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  <div id="ytPlayer" style="width:100%;aspect-ratio:16/9;"></div>
 </section>
 
 <!-- GREETING -->
@@ -566,6 +662,46 @@ var o = new IntersectionObserver(function(e) {
 }, { threshold: 0.15 });
 var r = document.querySelectorAll('.fade-in');
 for (var i = 0; i < r.length; i++) o.observe(r[i]);
+
+var player;
+var isMuted = false;
+
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(tag);
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytPlayer', {
+    videoId: 'znEGTBphsFw',
+    playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
+    events: { onReady: function(){} }
+  });
+}
+
+document.getElementById('introBtn').addEventListener('click', function() {
+  document.getElementById('introOverlay').classList.add('hide');
+  document.getElementById('soundBtn').style.display = 'flex';
+  if (player && player.playVideo) {
+    player.playVideo();
+    player.unMute();
+  }
+  setTimeout(function() {
+    document.getElementById('introOverlay').style.display = 'none';
+  }, 900);
+});
+
+document.getElementById('soundBtn').addEventListener('click', function() {
+  if (!player) return;
+  if (isMuted) {
+    player.unMute();
+    this.innerHTML = '&#128266;';
+    isMuted = false;
+  } else {
+    player.mute();
+    this.innerHTML = '&#128264;';
+    isMuted = true;
+  }
+});
 </script>
 </body>
 </html>
