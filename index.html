@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>영준 ♥ 혜인 결혼합니다</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF7F2;
+  --bg2: #F5F0E8;
+  --card: #FFFFFF;
+  --text: #3D3428;
+  --text2: #6B6252;
+  --text3: #9C9485;
+  --accent: #8B9E7E;
+  --accent2: #A3B595;
+  --lavender: #9B8EC4;
+  --lavender2: #B5A8D4;
+  --gold: #C4A96A;
+  --pink: #D4A5A5;
+  --border: #E8E2D8;
+  --divider: #D5CFC5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+/* ===== COVER ===== */
+.cover {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.cover img {
+  width: 100%;
+  display: block;
+}
+.cover-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent 0%, rgba(61,52,40,0.5) 60%, rgba(61,52,40,0.75) 100%);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+.cover-date-eng {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .75rem;
+  color: rgba(255,255,255,.7);
+  letter-spacing: 4px;
+  font-weight: 300;
+  margin-bottom: .3rem;
+}
+.cover-names {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-bottom: .3rem;
+}
+.cover-names .amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  margin: 0 .3rem;
+  font-weight: 300;
+  color: var(--lavender2);
+}
+.cover-venue {
+  font-size: .7rem;
+  color: rgba(255,255,255,.6);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* ===== SECTIONS ===== */
+section { padding: 3rem 1.5rem; }
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--divider);
+  margin: 0 auto 1.5rem;
+}
+.sec-eng {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .7rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: .3rem;
+  font-weight: 500;
+}
+.sec-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+/* ===== GREETING ===== */
+.greeting {
+  text-align: center;
+  background: var(--bg);
+}
+.greeting-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: .88rem;
+  font-weight: 300;
+  color: var(--text2);
+  line-height: 2.2;
+  letter-spacing: .5px;
+}
+.greeting-text em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ===== COUPLE PHOTO ===== */
+.couple-photo {
+  padding: 0;
+}
+.couple-photo img {
+  width: 100%;
+}
+
+/* ===== FAMILY INFO ===== */
+.family {
+  text-align: center;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.family-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.2rem;
+}
+.family-row:last-child { margin-bottom: 0; }
+.family-side {
+  text-align: center;
+  min-width: 120px;
+}
+.family-label {
+  font-size: .65rem;
+  color: var(--text3);
+  letter-spacing: 2px;
+  margin-bottom: .4rem;
+  font-weight: 400;
+}
+.family-parents {
+  font-size: .82rem;
+  color: var(--text2);
+  font-weight: 400;
+  line-height: 1.8;
+}
+.family-parents .role {
+  font-size: .7rem;
+  color: var(--text3);
+  margin-right: .3rem;
+}
+.family-couple {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .2rem;
+}
+
+/* ===== CALENDAR ===== */
+.calendar {
+  text-align: center;
+  background: var(--bg);
+}
+.cal-date-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: 2px;
+  margin-bottom: .2rem;
+}
+.cal-date-kr {
+  font-size: .85rem;
+  color: var(--text2);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  max-width: 320px;
+  margin: 0 auto;
+  font-size: .75rem;
+}
+.cal-head {
+  font-size: .65rem;
+  color: var(--text3);
+  font-weight: 500;
+  padding: .5rem 0;
+  letter-spacing: 1px;
+}
+.cal-head.sun { color: var(--pink); }
+.cal-day {
+  padding: .45rem 0;
+  color: var(--text2);
+  font-weight: 300;
+}
+.cal-day.sun { color: var(--pink); }
+.cal-day.sat { color: #7A9AC4; }
+.cal-day.empty { visibility: hidden; }
+.cal-day.today {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 600;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.cal-dday {
+  margin-top: 1.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .85rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+  padding: 3rem 0;
+  background: var(--bg2);
+}
+.gallery .sec-eng, .gallery .sec-title {
+  padding: 0 1.5rem;
+}
+.gallery-scroll {
+  display: flex;
+  gap: .6rem;
+  overflow-x: auto;
+  padding: 0 1.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.gallery-scroll::-webkit-scrollbar { display: none; }
+.gallery-item {
+  flex: 0 0 75%;
+  scroll-snap-align: center;
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.gallery-item.wide {
+  aspect-ratio: 16/10;
+  flex: 0 0 85%;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-hint {
+  text-align: center;
+  font-size: .65rem;
+  color: var(--text3);
+  margin-top: .8rem;
+  padding: 0 1.5rem;
+}
+
+/* ===== VIDEO ===== */
+.video {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+  display: block;
+  margin-top: 1rem;
+}
+
+/* ===== VENUE ===== */
+.venue {
+  text-align: center;
+  background: var(--bg);
+}
+.venue-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: .2rem;
+}
+.venue-hall {
+  font-size: .82rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: .8rem;
+}
+.venue-addr {
+  font-size: .78rem;
+  color: var(--text2);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: .5rem;
+}
+.venue-note {
+  font-size: .72rem;
+  color: var(--text3);
+  margin-bottom: 1.5rem;
+}
+.venue-btns {
+  display: flex;
+  gap: .6rem;
+  justify-content: center;
+}
+.venue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .75rem;
+  font-weight: 500;
+  padding: .65rem 1.3rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  background: var(--card);
+  transition: all .3s;
+}
+.venue-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ===== FOOTER ===== */
+.footer-msg {
+  text-align: center;
+  padding: 3rem 1.5rem 2rem;
+  background: var(--bg2);
+}
+.footer-msg p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: .85rem;
+  color: var(--text2);
+  font-weight: 300;
+  line-height: 2;
+}
+.footer-heart {
+  font-size: 1.2rem;
+  margin-bottom: .8rem;
+  color: var(--pink);
+}
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: .6rem;
+  color: var(--text3);
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== LEAF DECORATION ===== */
+.leaf-deco {
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 1.2rem;
+  color: var(--accent2);
+  letter-spacing: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <img src="images/hero.jpg" alt="영준 혜인">
+  <div class="cover-overlay">
+    <div class="cover-date-eng">SEPTEMBER 12, 2026</div>
+    <div class="cover-names">YOUNGJUN <span class="amp">&hearts;</span> HYIIN</div>
+    <div class="cover-venue">하우스 오브 더 라움 · 아마리스 홀</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<section class="video" style="padding:2rem 1.5rem 2.5rem">
+  <iframe src="https://www.youtube.com/embed/znEGTBphsFw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</section>
+
+<!-- GREETING -->
+<section class="greeting fade-in">
+  <div class="sec-eng">Invitation</div>
+  <div class="divider"></div>
+  <p class="greeting-text">
+    서로의 마음에<br>
+    조용히 스며들었던 두 사람이<br>
+    이제 같은 길을 걸어가려 합니다.<br><br>
+    함께해 주시는 한 걸음 한 걸음이<br>
+    저희에게는 큰 축복이 됩니다.<br><br>
+    귀한 걸음 하시어<br>
+    따뜻한 마음으로<br>
+    자리를 빛내 주시면 감사하겠습니다.
+  </p>
+</section>
+
+<!-- COUPLE PHOTO -->
+<div class="couple-photo">
+  <img src="images/couple1.jpg" alt="영준 혜인">
+</div>
+
+<!-- FAMILY -->
+<section class="family fade-in">
+  <div class="sec-eng">Families</div>
+  <div class="divider"></div>
+  <div class="family-row">
+    <div class="family-side">
+      <div class="family-label">신랑 측 혼주</div>
+      <div class="family-parents"><span class="role">아버지</span> 윤광호</div>
+      <div class="family-parents"><span class="role">어머니</span> 윤옥자</div>
+    </div>
+    <div class="family-side">
+      <div class="family-label">신부 측 혼주</div>
+      <div class="family-parents"><span class="role">아버지</span> 류상호</div>
+      <div class="family-parents"><span class="role">어머니</span> 박옥희</div>
+    </div>
+  </div>
+  <div style="margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--border);">
+    <div class="family-row">
+      <div class="family-side">
+        <div class="family-label">신랑</div>
+        <div class="family-couple">윤영준</div>
+      </div>
+      <div class="family-side">
+        <div class="family-label">신부</div>
+        <div class="family-couple">류혜인</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section class="calendar fade-in">
+  <div class="sec-eng">Wedding Day</div>
+  <div class="divider"></div>
+  <div class="cal-date-big">2026. 09. 12</div>
+  <div class="cal-date-kr">토요일 오후 2시</div>
+  <div class="cal-grid">
+    <div class="cal-head sun">일</div><div class="cal-head">월</div><div class="cal-head">화</div><div class="cal-head">수</div><div class="cal-head">목</div><div class="cal-head">금</div><div class="cal-head">토</div>
+    <div class="cal-day empty">.</div><div class="cal-day empty">.</div><div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day sat">5</div>
+    <div class="cal-day sun">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day sat today">12</div>
+    <div class="cal-day sun">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day sat">19</div>
+    <div class="cal-day sun">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day sat">26</div>
+    <div class="cal-day sun">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day empty">.</div><div class="cal-day empty">.</div><div class="cal-day empty">.</div>
+  </div>
+  <div class="cal-dday">D-Day</div>
+</section>
+
+<div class="leaf-deco">&#127807; &#127807; &#127807;</div>
+
+<!-- GALLERY -->
+<section class="gallery fade-in">
+  <div class="sec-eng">Gallery</div>
+  <h2 class="sec-title">우리의 이야기</h2>
+  <div class="gallery-scroll">
+    <div class="gallery-item"><img src="images/couple3.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/couple4.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/bride1.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/groom2.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/couple5.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/couple6.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/groom1.jpg" alt=""></div>
+    <div class="gallery-item wide"><img src="images/bride2.jpg" alt=""></div>
+    <div class="gallery-item wide"><img src="images/casual.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/couple2.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo13.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo14.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo15.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo16.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo17.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo18.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo19.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo20.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo21.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo22.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo23.jpg" alt=""></div>
+    <div class="gallery-item"><img src="images/photo24.jpg" alt=""></div>
+  </div>
+  <div class="gallery-hint">&#8592; 옆으로 넘겨보세요 &#8594;</div>
+</section>
+
+
+
+<!-- VENUE -->
+<section class="venue fade-in">
+  <div class="sec-eng">Location</div>
+  <div class="divider"></div>
+  <div class="venue-name">하우스 오브 더 라움</div>
+  <div class="venue-hall">아마리스 홀 (B1)</div>
+  <div class="venue-addr">
+    서울시 광진구 능동로 81, B1
+  </div>
+  <div class="venue-note">
+    건대입구역 5번 출구 도보 2분
+  </div>
+  <div class="venue-btns">
+    <a href="https://map.kakao.com/link/to/하우스오브더라움,37.5408,127.0698" target="_blank" class="venue-btn">&#128205; 카카오맵</a>
+    <a href="https://map.naver.com/v5/search/하우스오브더라움" target="_blank" class="venue-btn">&#128204; 네이버지도</a>
+    <a href="https://maps.google.com/maps?q=37.5408,127.0698" target="_blank" class="venue-btn">&#127760; 구글맵</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-msg fade-in">
+  <div class="footer-heart">&#10084;</div>
+  <p>
+    영준 <span style="color:var(--accent)">&amp;</span> 혜인
+  </p>
+  <p style="font-size:.75rem; margin-top:.5rem; color:var(--text3)">
+    2026년 9월 12일 토요일 오후 2시
+  </p>
+</div>
+
+<footer>
+  Wedding Invitation
+</footer>
+
+<script>
+var o = new IntersectionObserver(function(e) {
+  e.forEach(function(x) {
+    if (x.isIntersecting) x.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+var r = document.querySelectorAll('.fade-in');
+for (var i = 0; i < r.length; i++) o.observe(r[i]);
+</script>
+</body>
+</html>
