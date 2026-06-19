@@ -365,6 +365,34 @@ section { padding: 3rem 1.5rem; }
   height: 100%;
   object-fit: cover;
 }
+.gallery-wrap {
+  position: relative;
+}
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  color: var(--text2);
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  transition: all .3s;
+}
+.gallery-arrow:hover {
+  background: #fff;
+  color: var(--accent);
+}
+.gallery-arrow.left { left: .5rem; }
+.gallery-arrow.right { right: .5rem; }
 .gallery-hint {
   text-align: center;
   font-size: .65rem;
@@ -594,6 +622,36 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  z-index: 9998;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lightbox.open {
+  display: flex;
+}
+.lightbox img {
+  max-width: 92%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 1.5rem;
+  color: rgba(255,255,255,.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 /* ===== ANIMATIONS ===== */
 .fade-in {
   opacity: 0;
@@ -716,7 +774,10 @@ footer {
 <section class="gallery fade-in">
   <div class="sec-eng">Gallery</div>
   <h2 class="sec-title">우리의 이야기</h2>
-  <div class="gallery-scroll">
+  <div class="gallery-wrap">
+    <button class="gallery-arrow left" onclick="scrollGallery(-1)">&#10094;</button>
+    <button class="gallery-arrow right" onclick="scrollGallery(1)">&#10095;</button>
+    <div class="gallery-scroll" id="galleryScroll">
     <div class="gallery-item"><img src="images/couple5.jpg" alt=""></div>
     <div class="gallery-item"><img src="images/couple3.jpg" alt=""></div>
     <div class="gallery-item"><img src="images/photo17.jpg" alt=""></div>
@@ -740,6 +801,7 @@ footer {
     <div class="gallery-item"><img src="images/photo24.jpg" alt=""></div>
     <div class="gallery-item"><img src="images/photo23.jpg" alt=""></div>
     <div class="gallery-item"><img src="images/casual.jpg" alt=""></div>
+  </div>
   </div>
   <div class="gallery-hint">&#8592; 옆으로 넘겨보세요 &#8594;</div>
 </section>
@@ -826,6 +888,12 @@ footer {
   Wedding Invitation
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <script>
 var o = new IntersectionObserver(function(e) {
   e.forEach(function(x) {
@@ -848,6 +916,29 @@ function onYouTubeIframeAPIReady() {
     playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
     events: { onReady: function(){} }
   });
+}
+
+function scrollGallery(dir) {
+  var el = document.getElementById('galleryScroll');
+  var item = el.querySelector('.gallery-item');
+  var w = item.offsetWidth + 10;
+  el.scrollBy({ left: dir * w, behavior: 'smooth' });
+}
+
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+var gItems = document.querySelectorAll('.gallery-item img');
+for (var g = 0; g < gItems.length; g++) {
+  gItems[g].style.cursor = 'pointer';
+  gItems[g].addEventListener('click', function() { openLightbox(this.src); });
 }
 
 function switchMap(type) {
